@@ -32,7 +32,7 @@ class PackageBoneServiceProvider extends ServiceProvider
     {
         
         if (isset($this->commands[0) {
-            $this->registerCommands($this->commands);
+            $this->registerCommands();
         }
             
     }
