@@ -9,6 +9,8 @@ use Illuminate\Contracts\Bus\QueueingDispatcher as QueueingDispatcherContract;
 
 class PackageBoneServiceProvider extends ServiceProvider
 {
+    
+    protected $commands = [];
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -28,7 +30,11 @@ class PackageBoneServiceProvider extends ServiceProvider
 
     public function boot()
     {
-
+        
+        if (isset($this->commands[0) {
+            $this->registerCommands($this->commands);
+        }
+            
     }
 
     /**
@@ -40,4 +46,25 @@ class PackageBoneServiceProvider extends ServiceProvider
     {
 
     }
+    
+                                  
+     /**
+     * Register the schedule tasks
+     *
+     * @return void
+     */
+     protected function registerCommands() 
+     {
+        $this->commands($this->commands);
+
+//         $this->app->booted(function () {
+//           $schedule = $this->app->make(Schedule::class);
+//           $schedule->command('advert:check')
+//             ->daily()
+//             ->appendOutputTo(storage_path('logs/jobs-advert-check-' . date('Y-m-d') . '.log'));
+//           $schedule->command('recommend:check')->withoutOverlapping()
+//             ->daily()
+//             ->appendOutputTo(storage_path('logs/jobs-recommend-check-' . date('Y-m-d') . '.log'));
+//         });   
+     }
 }
