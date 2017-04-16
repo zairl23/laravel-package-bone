@@ -9,7 +9,9 @@ use Illuminate\Contracts\Bus\QueueingDispatcher as QueueingDispatcherContract;
 
 class PackageBoneServiceProvider extends ServiceProvider
 {
-    
+
+    protected $serviceName = 'bone';
+
     protected $commands = [];
     /**
      * Indicates if loading of the provider is deferred.
@@ -30,11 +32,13 @@ class PackageBoneServiceProvider extends ServiceProvider
 
     public function boot()
     {
-        
+
         if (isset($this->commands[0) {
             $this->registerCommands();
         }
-            
+
+        $this->publishes();
+
     }
 
     /**
@@ -46,14 +50,14 @@ class PackageBoneServiceProvider extends ServiceProvider
     {
 
     }
-    
-                                  
+
+
      /**
      * Register the schedule tasks
      *
      * @return void
      */
-     protected function registerCommands() 
+     protected function registerCommands()
      {
         $this->commands($this->commands);
 
@@ -65,6 +69,27 @@ class PackageBoneServiceProvider extends ServiceProvider
 //           $schedule->command('recommend:check')->withoutOverlapping()
 //             ->daily()
 //             ->appendOutputTo(storage_path('logs/jobs-recommend-check-' . date('Y-m-d') . '.log'));
-//         });   
+//         });
+     }
+
+     public function publishes()
+     {
+         $this->publishes([
+            __DIR__.'/../assets' => public_path("vendor/$this->serviceName"),
+        ], 'public');
+
+         $this->publishes([
+            __DIR__."/../config/$this->serviceName.php" => config_path("{serviceName}.php")
+         ], 'config');
+
+         $this->publishes([
+            __DIR__.'/../database/migrations/' => database_path('migrations')
+         ], 'migrations');
+
+         $this->loadViewsFrom(__DIR__.'/../views', $this->serviceName);
+
+         $this->publishes([
+            __DIR__.'/../views' => base_path("resources/views/vendor/$this->serviceName"),
+         ]);
      }
 }
