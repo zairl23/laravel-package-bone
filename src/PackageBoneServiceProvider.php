@@ -82,14 +82,16 @@ class PackageBoneServiceProvider extends ServiceProvider
             __DIR__."/../config/$this->serviceName.php" => config_path("{serviceName}.php")
          ], 'config');
 
-         $this->publishes([
-            __DIR__.'/../database/migrations/' => database_path('migrations')
-         ], 'migrations');
+         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
+
+        //  $this->publishes([
+        //     __DIR__.'/../database/migrations/' => database_path('migrations')
+        //  ], 'migrations');
 
          $this->loadViewsFrom(__DIR__.'/../views', $this->serviceName);
 
-         $this->publishes([
-            __DIR__.'/../views' => base_path("resources/views/vendor/$this->serviceName"),
-         ]);
+        //  $this->publishes([
+        //     __DIR__.'/../views' => base_path("resources/views/vendor/$this->serviceName"),
+        //  ]);
      }
 }
