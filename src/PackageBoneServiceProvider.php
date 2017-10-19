@@ -1,6 +1,6 @@
 <?php
 
-namespace Illuminate\Bus;
+namespace Ney\PackageBone;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Contracts\Bus\Dispatcher as DispatcherContract;
@@ -10,7 +10,7 @@ use Illuminate\Contracts\Bus\QueueingDispatcher as QueueingDispatcherContract;
 class PackageBoneServiceProvider extends ServiceProvider
 {
 
-    protected $serviceName = 'bone';
+    protected $serviceName = 'package-bone';
 
     protected $commands = [];
     /**
@@ -38,6 +38,7 @@ class PackageBoneServiceProvider extends ServiceProvider
         }
 
         $this->publishes();
+        $this->bootRoutes();
 
     }
 
@@ -75,12 +76,12 @@ class PackageBoneServiceProvider extends ServiceProvider
      public function publishes()
      {
          $this->publishes([
-            __DIR__.'/../assets' => public_path("vendor/$this->serviceName"),
+            __DIR__.'/../resources/assets' => public_path("vendor/$this->serviceName"),
         ], 'public');
 
-         $this->publishes([
-            __DIR__."/../config/$this->serviceName.php" => config_path("{serviceName}.php")
-         ], 'config');
+        //  $this->publishes([
+        //     __DIR__."/../config/$this->serviceName.php" => config_path("{serviceName}.php")
+        //  ], 'config');
 
          $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
 
@@ -88,10 +89,21 @@ class PackageBoneServiceProvider extends ServiceProvider
         //     __DIR__.'/../database/migrations/' => database_path('migrations')
         //  ], 'migrations');
 
-         $this->loadViewsFrom(__DIR__.'/../views', $this->serviceName);
+         $this->loadViewsFrom(__DIR__.'/../resources/views', $this->serviceName);
 
         //  $this->publishes([
         //     __DIR__.'/../views' => base_path("resources/views/vendor/$this->serviceName"),
         //  ]);
+     }
+
+     protected function bootRoutes()
+     {
+        \Route::group([
+            "namespace" => "Ney\PackageBone\Http\Controllers",
+            "prefix" => "",
+            "middleware" => [],
+        ], function(){
+           require  __DIR__ . "/../routes/web.php";
+        });
      }
 }

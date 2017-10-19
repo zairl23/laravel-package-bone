@@ -1,1 +1,9 @@
-vendor
+/vendor
+/laravel
+/node_modules
+composer.phar
+composer.lock
+.DS_Store
+Thumbs.db
+phpunit.xml
+/.idea
