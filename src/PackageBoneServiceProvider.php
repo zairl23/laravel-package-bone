@@ -33,7 +33,7 @@ class PackageBoneServiceProvider extends ServiceProvider
     public function boot()
     {
 
-        if (isset($this->commands[0) {
+        if (isset($this->commands[0]) {
             $this->registerCommands();
         }
 
