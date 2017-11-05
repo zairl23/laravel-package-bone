@@ -1,6 +1,6 @@
 <?php
 
-namespace Ney\PackageBone\Http\Controllers\;
+namespace Ney\PackageBone\Http\Controllers;
 
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;

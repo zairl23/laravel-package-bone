@@ -33,11 +33,11 @@ class PackageBoneServiceProvider extends ServiceProvider
     public function boot()
     {
 
-        if (isset($this->commands[0]) {
+        if (isset($this->commands[0])) {
             $this->registerCommands();
         }
 
-        $this->publishes();
+        $this->booFiles();
         $this->bootRoutes();
 
     }
@@ -73,7 +73,7 @@ class PackageBoneServiceProvider extends ServiceProvider
 //         });
      }
 
-     public function publishes()
+     public function bootFiles()
      {
          $this->publishes([
             __DIR__.'/../resources/assets' => public_path("vendor/$this->serviceName"),
