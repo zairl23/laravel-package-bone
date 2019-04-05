@@ -2,108 +2,16 @@
 
 namespace Ney\PackageBone;
 
-use Illuminate\Support\ServiceProvider;
-use Illuminate\Contracts\Bus\Dispatcher as DispatcherContract;
-use Illuminate\Contracts\Queue\Factory as QueueFactoryContract;
-use Illuminate\Contracts\Bus\QueueingDispatcher as QueueingDispatcherContract;
-
 class PackageBoneServiceProvider extends ServiceProvider
 {
+    
+    public function boot()
+    {
 
-    protected $serviceName = 'package-bone';
+    }
 
-    protected $commands = [];
-    /**
-     * Indicates if loading of the provider is deferred.
-     *
-     * @var bool
-     */
-    // protected $defer = true;
-
-    /**
-     * Register the service provider.
-     *
-     * @return void
-     */
     public function register()
     {
 
     }
-
-    public function boot()
-    {
-
-        if (isset($this->commands[0])) {
-            $this->registerCommands();
-        }
-
-        $this->booFiles();
-        $this->bootRoutes();
-
-    }
-
-    /**
-     * Get the services provided by the provider.
-     *
-     * @return array
-     */
-    public function provides()
-    {
-
-    }
-
-
-     /**
-     * Register the schedule tasks
-     *
-     * @return void
-     */
-     protected function registerCommands()
-     {
-        $this->commands($this->commands);
-
-//         $this->app->booted(function () {
-//           $schedule = $this->app->make(Schedule::class);
-//           $schedule->command('advert:check')
-//             ->daily()
-//             ->appendOutputTo(storage_path('logs/jobs-advert-check-' . date('Y-m-d') . '.log'));
-//           $schedule->command('recommend:check')->withoutOverlapping()
-//             ->daily()
-//             ->appendOutputTo(storage_path('logs/jobs-recommend-check-' . date('Y-m-d') . '.log'));
-//         });
-     }
-
-     public function bootFiles()
-     {
-         $this->publishes([
-            __DIR__.'/../resources/assets' => public_path("vendor/$this->serviceName"),
-        ], 'public');
-
-        //  $this->publishes([
-        //     __DIR__."/../config/$this->serviceName.php" => config_path("{serviceName}.php")
-        //  ], 'config');
-
-         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
-
-        //  $this->publishes([
-        //     __DIR__.'/../database/migrations/' => database_path('migrations')
-        //  ], 'migrations');
-
-         $this->loadViewsFrom(__DIR__.'/../resources/views', $this->serviceName);
-
-        //  $this->publishes([
-        //     __DIR__.'/../views' => base_path("resources/views/vendor/$this->serviceName"),
-        //  ]);
-     }
-
-     protected function bootRoutes()
-     {
-        \Route::group([
-            "namespace" => "Ney\PackageBone\Http\Controllers",
-            "prefix" => "",
-            "middleware" => [],
-        ], function(){
-           require  __DIR__ . "/../routes/web.php";
-        });
-     }
 }

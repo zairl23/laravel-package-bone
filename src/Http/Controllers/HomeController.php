@@ -6,6 +6,6 @@ class HomeController extends Controller
 {
     public function welcome()
     {
-        return view("package-bone::welcome");
+        return 'welcome';
     }
 }

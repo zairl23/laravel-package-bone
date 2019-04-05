@@ -1,7 +1,14 @@
 {
     "name": "ney/laravel-package-bone",
-    "type": "laravel package",
-    "minimum-stability": "dev",
+    "description": "Starter project for developing Laravel package.",
+    "keywords": ["laravel", "package", "starter"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ney Chang",
+            "email": "zoobile@gmail.com"
+        }
+    ],
     "require": {},
     "require-dev": {
       "behat/behat": "^3.3",
@@ -20,7 +27,12 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\": "tests/"
+            "Ney\\PackageBone\\Tests\\": "tests/"
         }
-    }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
