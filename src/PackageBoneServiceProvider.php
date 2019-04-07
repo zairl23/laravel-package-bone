@@ -2,6 +2,8 @@
 
 namespace Ney\PackageBone;
 
+use Illuminate\Support\ServiceProvider;
+
 class PackageBoneServiceProvider extends ServiceProvider
 {
     
