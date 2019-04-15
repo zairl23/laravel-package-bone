@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests;
+namespace Ney\PackageBone\Tests;
 
 use Orchestra\Testbench\TestCase;
 
@@ -14,7 +14,7 @@ use Orchestra\Testbench\TestCase;
  *
  * @see     https://github.com/swooliy/laraket/me
  */
-abstract class IntegrationTest extends TestCase
+abstract class IntegrationTestCase extends TestCase
 {
     /**
      * Setup the test case.
@@ -63,11 +63,11 @@ abstract class IntegrationTest extends TestCase
      *
      * @return array
      */
-    protected function getApplicationAliases($app)
-    {
-        return [
-        ];
-    }
+    // protected function getApplicationAliases($app)
+    // {
+    //     return [
+    //     ];
+    // }
 
     /**
      * Configure the environment.

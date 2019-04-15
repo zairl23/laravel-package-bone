@@ -1,13 +1,10 @@
 <?php
 
-namespace Tests\Feature;
+namespace Ney\PackageBone\Tests\Feature;
 
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithoutMiddleware;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Ney\PackageBone\Tests\IntegrationTestCase;
 
-class ExampleTest extends TestCase
+class ExampleTest extends IntegrationTestCase
 {
     /**
      * A basic test example.
@@ -16,8 +13,8 @@ class ExampleTest extends TestCase
      */
     public function testBasicTest()
     {
-        $response = $this->get('/');
+        $response = $this->get('/test');
 
-        $response->assertStatus(200);
+        $response->assertStatus(404);
     }
 }
