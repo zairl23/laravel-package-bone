@@ -11,7 +11,7 @@ class PackageBoneServiceProvider extends ServiceProvider
     public function boot()
     {
         Route::group(
-            ['prefix' => 'task'], 
+            ['prefix' => 'bone'], 
             function () {
                 require __DIR__ . "/../routes/web.php";
             }

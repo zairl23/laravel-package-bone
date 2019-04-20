@@ -4,16 +4,6 @@ namespace Ney\PackageBone\Tests;
 
 use Orchestra\Testbench\TestCase;
 
-/**
- * IntegrationTest.
- *
- * @category TestCase
- *
- * @author   ney <zoobile@gmail.com>
- * @license  MIT https://github.com/swooliy/laraket/me/LICENSE.md
- *
- * @see     https://github.com/swooliy/laraket/me
- */
 abstract class IntegrationTestCase extends TestCase
 {
     /**
